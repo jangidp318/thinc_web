@@ -3,12 +3,12 @@ name: 🧠 Thinc Monorepo CI/CD
 on:
   push:
     branches:
-      - master
+      - main
       - staging
       - production
   pull_request:
     branches:
-      - master
+      - main
       - staging
 
 jobs:
