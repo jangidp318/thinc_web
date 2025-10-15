@@ -1,0 +1,46 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Express + TypeScript backend with MongoDB",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "build": "tsc",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,scss,md}'",
+    "start": "node dist/server.js",
+    "lint": "eslint . --ext .ts,.tsx,.js",
+    "lint:fix": "eslint . --ext .ts,.tsx,.js --fix",
+    "typecheck": "tsc --noEmit",
+    "depcheck": "depcheck || true",
+    "audit": "npm audit --audit-level=moderate",
+    "test": "jest --passWithNoTests",
+    "ci-checks": "npm run typecheck && npm run lint && npm run audit && npm run depcheck && npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.19",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.1",
+    "supertest": "^7.1.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.23",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.7.2",
+    "@types/supertest": "^6.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.37.0",
+    "eslint-plugin-security": "^3.0.1",
+    "jest": "^30.2.0",
+    "nodemon": "^3.1.10",
+    "ts-jest": "^29.4.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,169 @@
+# ============================================================
+# 🔹 THINC-WEBSITE Monorepo Git Ignore
+# Root + Frontend (Next.js) + Backend (Express / TypeScript)
+# ============================================================
+
+# ------------------------------------------------------------
+# 🟦 Node / TypeScript (All Workspaces)
+# ------------------------------------------------------------
+**/node_modules/
+**/dist/
+**/build/
+**/lib/
+**/.cache/
+**/*.tsbuildinfo
+**/tsconfig.tsbuildinfo
+**/tmp/
+**/temp/
+**/*.tmp
+**/*.bak
+**/*.old
+**/*.orig
+
+# ------------------------------------------------------------
+# 🟨 Environment / Local Config
+# ------------------------------------------------------------
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+**/.env.*
+.env
+.env.local
+
+# ------------------------------------------------------------
+# 🟥 Logs / Reports / Coverage
+# ------------------------------------------------------------
+**/logs/
+**/*.log
+**/*.log.*
+**/debug.log
+**/error.log
+**/coverage/
+**/.nyc_output/
+**/jest-html-reporters-*
+**/reports/
+*.pid
+*.seed
+*.pid.lock
+
+# ------------------------------------------------------------
+# 🟩 Next.js Frontend Specific
+# ------------------------------------------------------------
+frontend/.next/
+frontend/out/
+frontend/.next.cache/
+frontend/.vercel/
+frontend/.cache/
+frontend/public/static/**/*.map
+frontend/.turbo/
+frontend/turbo/
+frontend/.storybook/
+frontend/storybook-static/
+
+# ------------------------------------------------------------
+# 🟧 Backend Specific (Express / TS)
+# ------------------------------------------------------------
+backend/dist/
+backend/build/
+backend/logs/
+backend/tmp/
+backend/cache/
+backend/coverage/
+backend/.tsbuildinfo
+
+# ------------------------------------------------------------
+# 🟪 Docker & Compose
+# ------------------------------------------------------------
+Dockerfile
+**/Dockerfile
+**/.dockerignore
+docker-compose.override.yml
+docker-compose.override.yaml
+docker-compose.local.yml
+docker-compose.dev.yml
+mongo_data/
+volumes/
+db_data/
+**/data/
+**/backup/
+**/logs/
+**/cache/
+**/tmp/
+**/storage/
+**/uploads/
+
+# ------------------------------------------------------------
+# 🟫 Husky / Git Hooks / Lint Tools
+# ------------------------------------------------------------
+.husky/_/
+.husky/_/*
+.eslintcache
+.prettier-cache
+stylelintcache
+lint-staged.config.js
+lint-staged.config.cjs
+lint-staged.config.mjs
+
+# ------------------------------------------------------------
+# 🧰 IDE / OS / Editor
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.vscode-test/
+*.iml
+*.code-workspace
+
+# ------------------------------------------------------------
+# 🧪 CI/CD / Build Artifacts
+# ------------------------------------------------------------
+.github/workflows/*.log
+.github/actions/**/tmp/
+*.tgz
+*.tar.gz
+*.zip
+*.gz
+*.coverage
+*.lcov
+*.cache-loader/
+.cache-loader/
+
+# ------------------------------------------------------------
+# ⚙️ Root & Tooling
+# ------------------------------------------------------------
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+turbo/
+.nx/
+lerna-debug.log
+pnpm-workspace.yaml.backup
+tsconfig.tsbuildinfo
+.eslintcache
+
+# ------------------------------------------------------------
+# 🧩 Miscellaneous
+# ------------------------------------------------------------
+*.local
+*.secret
+*.backup
+*.retry
+*.tmp.json
+*.env.bak
+*.swp
+
+# ============================================================
+# ✅ END OF FILE
+# ============================================================
