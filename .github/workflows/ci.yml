@@ -20,18 +20,21 @@ jobs:
       - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🧰 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      - name: 🧩 Setup PNPM
+      # 🧩 Install PNPM first — ensures it's globally available
+      - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 10.14.0
           run_install: false
 
+      # 🧰 Then setup Node (so PNPM stays in PATH)
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      # ♻️ Cache PNPM store
       - name: ♻️ Cache PNPM Store
         uses: actions/cache@v4
         with:
@@ -40,13 +43,9 @@ jobs:
           restore-keys: |
             pnpm-${{ runner.os }}-
 
+      # 📦 Install dependencies
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
-
-      - name: 🧹 Clean workspace
-        run: |
-          chmod +x scripts/clean-all.sh
-          ./scripts/clean-all.sh || echo "No cleanup script found"
 
   lint-and-typecheck:
     name: 🧪 Lint + TypeCheck
@@ -55,17 +54,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: 🧰 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
 
-      - name: 🧩 Setup PNPM
+      - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 10.14.0
           run_install: false
+
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
 
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -83,17 +83,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: 🧰 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      - name: 🧩 Setup PNPM
+      - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 10.14.0
           run_install: false
+
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
 
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -115,17 +115,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: 🧰 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "pnpm"
-
-      - name: 🧩 Setup PNPM
+      - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v3
         with:
           version: 10.14.0
           run_install: false
+
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
 
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
