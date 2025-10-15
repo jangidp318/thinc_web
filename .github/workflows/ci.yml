@@ -26,11 +26,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: 📦 Enable Corepack & Install PNPM
-        run: |
-          corepack enable
-          corepack prepare pnpm@10.14.0 --activate
-          echo "✅ PNPM version: $(pnpm --version)"
+      - name: 🧩 Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.14.0
+          run_install: false
 
       - name: ♻️ Cache PNPM Store
         uses: actions/cache@v4
@@ -61,11 +61,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: 📦 Enable Corepack & Install PNPM
-        run: |
-          corepack enable
-          corepack prepare pnpm@10.14.0 --activate
-          pnpm --version
+      - name: 🧩 Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.14.0
+          run_install: false
 
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -89,11 +89,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: 📦 Enable Corepack & Install PNPM
-        run: |
-          corepack enable
-          corepack prepare pnpm@10.14.0 --activate
-          pnpm --version
+      - name: 🧩 Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.14.0
+          run_install: false
 
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -121,11 +121,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
-      - name: 📦 Enable Corepack & Install PNPM
-        run: |
-          corepack enable
-          corepack prepare pnpm@10.14.0 --activate
-          pnpm --version
+      - name: 🧩 Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10.14.0
+          run_install: false
 
       - name: 📦 Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -161,8 +161,7 @@ jobs:
       - name: 🧭 Deploy to Staging
         run: |
           echo "✅ Deploying staging environment..."
-          # Add your actual deployment command here
-          # Example: ssh user@staging-server "cd /app && docker compose pull && docker compose up -d"
+          # ssh user@staging "cd /app && docker compose pull && docker compose up -d"
 
   deploy-production:
     name: 🚀 Deploy to Production
@@ -174,5 +173,4 @@ jobs:
       - name: 🧭 Deploy to Production
         run: |
           echo "✅ Deploying production environment..."
-          # Add your production deployment command here
-          # Example: ssh user@prod-server "cd /app && docker compose pull && docker compose up -d"
+          # ssh user@prod "cd /app && docker compose pull && docker compose up -d"
