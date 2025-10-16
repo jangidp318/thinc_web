@@ -76,8 +76,6 @@ backend/.tsbuildinfo
 # ------------------------------------------------------------
 # 🟪 Docker & Compose
 # ------------------------------------------------------------
-Dockerfile
-**/Dockerfile
 **/.dockerignore
 docker-compose.override.yml
 docker-compose.override.yaml
@@ -85,6 +83,7 @@ docker-compose.local.yml
 docker-compose.dev.yml
 mongo_data/
 volumes/
+*.pid
 db_data/
 **/data/
 **/backup/
@@ -93,6 +92,7 @@ db_data/
 **/tmp/
 **/storage/
 **/uploads/
+
 
 # ------------------------------------------------------------
 # 🟫 Husky / Git Hooks / Lint Tools
