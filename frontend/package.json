@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src pages --max-warnings=0",
+    "lint": "next lint",
     "lint:fix": "eslint src pages --fix",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"

@@ -5,16 +5,17 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,json,css,scss,md}'",
     "start": "node dist/server.js",
-    "lint": "eslint . --ext .ts,.tsx,.js",
     "lint:fix": "eslint . --ext .ts,.tsx,.js --fix",
     "typecheck": "tsc --noEmit",
     "depcheck": "depcheck || true",
     "audit": "npm audit --audit-level=moderate",
     "test": "jest --passWithNoTests",
-    "ci-checks": "npm run typecheck && npm run lint && npm run audit && npm run depcheck && npm run test"
+    "test:watch": "jest --watch",
+    "ci-checks": "npm run typecheck && npm run lint && npm run audit && npm run depcheck && npm run test",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
