@@ -5,21 +5,21 @@ import globals from "globals";
 /** @type {import('eslint').Linter.Config[]} */
 export default tseslint.config(
     {
-        // 🧹 Ignore build, config, and env files
+        // ✅ Ignore all test and build folders completely
         ignores: [
-            ".next/**",
-            "out/**",
             "dist/**",
-            "build/**",
             "node_modules/**",
-            ".turbo/**",
-            ".vercel/**",
-            "*.config.*", // ✅ Ignore Tailwind, PostCSS, etc.
+            "src/__tests__/**",
+            "**/*.test.ts",
+            "**/*.test.js",
+            "*.config.js",
+            "*.config.cjs",
+            "*.config.mjs",
             "*.env",
         ],
     },
     {
-        files: ["src/**/*.{ts,tsx}", "pages/**/*.{ts,tsx}"],
+        files: ["src/**/*.ts"],
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
@@ -27,7 +27,6 @@ export default tseslint.config(
                 tsconfigRootDir: import.meta.dirname,
             },
             globals: {
-                ...globals.browser,
                 ...globals.node,
             },
         },
@@ -36,7 +35,6 @@ export default tseslint.config(
         },
         rules: {
             "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
-            "react/react-in-jsx-scope": "off", // ✅ Next.js handles React
             "no-console": "off",
         },
     },

@@ -13,5 +13,5 @@
     "types": ["node", "express", "jest"]
   },
   "include": ["src/**/*.ts", "src/**/*.test.ts"],
-  "exclude": ["node_modules", "dist", "**/__tests__/**", "**/*.test.ts"]
+  "exclude": ["dist", "node_modules", "src/__tests__"]
 }
