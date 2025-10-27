@@ -76,7 +76,6 @@ backend/.tsbuildinfo
 # ------------------------------------------------------------
 # 🟪 Docker & Compose
 # ------------------------------------------------------------
-**/.dockerignore
 docker-compose.override.yml
 docker-compose.override.yaml
 docker-compose.local.yml

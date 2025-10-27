@@ -1,28 +1,28 @@
-# ---------- BASE ----------
+# backend/Dockerfile
 FROM node:20-alpine AS base
 WORKDIR /app
 RUN corepack enable
 
-# ---------- DEPS ----------
+# deps stage: install workspace deps (dev deps included for build tools)
 FROM base AS deps
-COPY ./backend/package.json ./backend/pnpm-lock.yaml* ./
-RUN cd backend && pnpm install --frozen-lockfile
+COPY pnpm-lock.yaml package.json pnpm-workspace.yaml ./
+COPY backend/package.json ./backend/package.json
+RUN pnpm install --frozen-lockfile --prod=false
 
-# ---------- BUILD ----------
+# build stage: compile backend using workspace filter so tsc is found
 FROM base AS build
+COPY --from=deps /app/node_modules ./node_modules
+COPY backend/ ./backend
+# compile from repo root using pnpm filter so tsc (in root devDeps) is resolved
 WORKDIR /app
-COPY ./tsconfig.base.json ./
-COPY --from=deps /app/backend/node_modules ./node_modules
-COPY ./backend/tsconfig.json ./tsconfig.json
-COPY ./backend/src ./src
-RUN pnpm exec tsc -p tsconfig.json
+RUN pnpm --filter ./backend exec tsc -p backend/tsconfig.json
 
-# ---------- PROD ----------
-FROM base AS prod
+# production stage: only runtime deps + compiled output
+FROM node:20-alpine AS prod
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=build /app/dist ./dist
-COPY ./backend/package.json ./backend/pnpm-lock.yaml* ./
-RUN pnpm install --prod --frozen-lockfile --ignore-scripts
+RUN corepack enable
+COPY --from=build /app/backend/dist ./dist
+COPY backend/package.json ./package.json
+RUN pnpm install --frozen-lockfile --prod --filter ./backend...
 EXPOSE 5000
 CMD ["node", "dist/server.js"]

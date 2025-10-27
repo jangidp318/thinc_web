@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+.pnpm-store
+.pnpm
+dist
+build
+frontend/.next
+*.log
+.git
+.gitignore
+.vscode
+.env*
+.DS_Store
